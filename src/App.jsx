@@ -207,9 +207,19 @@ const App = () => {
     };
 
   return (
-    <div className="bg-gradient-to-br from-stone-900 via-zinc-900 to-neutral-800 min-h-screen w-full flex flex-col items-center px-4 pt-12 pb-8">
+    <motion.div 
+      className="bg-gradient-to-br from-stone-900 via-zinc-900 to-neutral-800 min-h-screen w-full flex flex-col items-center px-4 pt-20 pb-8"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
       {/* Navbar */}
-      <motion.nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-gradient-to-r from-zinc-950/60 via-zinc-900/60 to-stone-900/60 text-indigo-300 shadow-md flex justify-between items-center px-6 py-2 border-b border-indigo-900">
+      <motion.nav 
+        className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-gradient-to-r from-zinc-950/60 via-zinc-900/60 to-stone-900/60 text-indigo-300 shadow-md flex justify-between items-center px-6 py-2 border-b border-indigo-900"
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <div className="flex items-center gap-4">
           <button onClick={() => setShowMenu(!showMenu)} className="text-indigo-300 hover:text-indigo-100">
             <Menu />
@@ -225,7 +235,13 @@ const App = () => {
 
       {/* Dropdown Menu */}
       {showMenu && (
-        <div className="absolute top-14 left-4 bg-zinc-900 border border-indigo-700 text-indigo-200 p-4 rounded-xl shadow-lg z-40">
+        <motion.div 
+          className="absolute top-14 left-4 bg-zinc-900 border border-indigo-700 text-indigo-200 p-4 rounded-xl shadow-lg z-40"
+          initial={{ opacity: 0, y: -10, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -10, scale: 0.9 }}
+          transition={{ duration: 0.2 }}
+        > 
           <h3 className="text-lg font-semibold mb-2">Choose Sorting Algorithm:</h3>
           <ul className="space-y-1">
             {Object.keys(sortingAlgorithms).map((algo) => (
@@ -244,39 +260,119 @@ const App = () => {
               </li>
             ))}
           </ul>
-        </div>
+        </motion.div>
       )}
 
-      {/* Bars */}
-      <div className="flex items-end gap-1 h-96 w-full max-w-6xl justify-center mt-2 mb-1">
-        {array.map((val, idx) => (
-          <motion.div key={idx} layout animate={{ height: val }} transition={{ duration: 0.4 }} className="flex flex-col items-center">
-            <motion.div style={{ height: val }} className="w-10 bg-indigo-600 rounded-t-lg shadow-md flex items-center justify-center text-white text-xs font-bold">
-              {val}
-            </motion.div>
-            <div className="text-indigo-300 text-xs mt-1">Idx {idx}</div>
-          </motion.div>
-        ))}
+      {/* Algorithm Description */}
+      <div className="w-full max-w-4xl -mb-16 mt-0">
+      <motion.div 
+  className="bg-zinc-900 border border-indigo-600 rounded-xl p-4 shadow-lg"
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.3 }}
+  whileHover={{ 
+    scale: 1.02,
+    boxShadow: "0px 20px 40px rgba(99, 102, 241, 0.2)"
+  }}
+>
+          <h3 className="text-lg font-bold text-indigo-400 mb-2">
+            Current Algorithm: {selectedAlgorithm}
+          </h3>
+          <p className="text-indigo-300 text-sm leading-relaxed">
+            {sortingAlgorithms[selectedAlgorithm]}
+          </p>
+        </motion.div>
       </div>
+
+      {/* Bars */}
+      <div className="flex items-end gap-1 h-96 w-full max-w-6xl justify-center mb-10">
+  {array.map((val, idx) => (
+    <motion.div 
+      key={idx} 
+      layout 
+      animate={{ height: val }} 
+      transition={{ 
+        duration: 0.6, 
+        ease: "easeInOut",
+        type: "spring",
+        stiffness: 100
+      }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ 
+        scale: 1.05, 
+        boxShadow: "0px 10px 20px rgba(99, 102, 241, 0.3)" 
+      }}
+      className="flex flex-col items-center"
+    >
+      <motion.div 
+        style={{ height: val }} 
+        className="w-10 bg-indigo-600 rounded-t-lg shadow-md flex items-center justify-center text-white text-xs font-bold"
+        animate={{ 
+          backgroundColor: completed ? "#" : "#333399",
+          scale: completed ? [1, 1.1, 1] : 1
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        {val}
+      </motion.div>
+      <motion.div 
+        className="text-indigo-300 text-xs mt-1"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: idx * 0.1 }}
+      >
+        Idx {idx}
+      </motion.div>
+    </motion.div>
+  ))}
+</div>
 
       {/* Controls */}
       <div className="flex flex-wrap gap-2 justify-center mb-4">
-        <motion.button whileTap={{ scale: 0.95 }} whileHover={{ scale: 1.05 }} onClick={generateNewArray} className="px-4 py-2 rounded-xl bg-gradient-to-r from-zinc-800 to-zinc-900 hover:from-zinc-700 hover:to-zinc-800 text-indigo-300">
+       <motion.button 
+  whileTap={{ scale: 0.95 }} 
+  whileHover={{ 
+    scale: 1.05,
+    boxShadow: "0px 5px 15px rgba(99, 102, 241, 0.3)"
+  }} 
+  onClick={generateNewArray} 
+  className="px-4 py-2 rounded-xl bg-gradient-to-r from-zinc-800 to-zinc-900 hover:from-zinc-700 hover:to-zinc-800 text-indigo-300"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 1, duration: 0.5 }}
+>
           New Array
         </motion.button>
-        <motion.button whileTap={{ scale: 0.95 }} whileHover={{ scale: 1.05 }} onClick={nextStep} className={`px-4 py-2 rounded-xl text-indigo-200 ${completed ? "bg-zinc-900" : "bg-gradient-to-r from-zinc-800 to-zinc-900 hover:from-zinc-700 hover:to-zinc-800"}`}>
-          ⏭ Next Step
-        </motion.button>
+        <motion.button 
+  whileTap={{ scale: 0.95 }} 
+  whileHover={{ 
+    scale: 1.05,
+    boxShadow: "0px 5px 15px rgba(99, 102, 241, 0.3)"
+  }} 
+  onClick={nextStep} 
+  className={`px-4 py-2 rounded-xl text-indigo-300 ${completed ? "bg-zinc-900" : "bg-gradient-to-r from-zinc-800 to-zinc-900 hover:from-zinc-700 hover:to-zinc-800"}`}
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 1.1, duration: 0.5 }}
+>
+  ⏭ Next Step
+</motion.button>
       </div>
 
       {/* Narration Panel */}
-      <motion.div ref={narrationRef} className="bg-zinc-900 text-indigo-300 p-5 w-full max-w-4xl rounded-xl h-60 overflow-y-auto font-mono text-sm whitespace-pre-wrap border border-indigo-600 shadow-inner">
+      <motion.div 
+  ref={narrationRef} 
+  className="bg-zinc-900 text-indigo-300 p-5 w-full max-w-4xl rounded-xl h-60 overflow-y-auto font-mono text-sm whitespace-pre-wrap border border-indigo-600 shadow-inner"
+  initial={{ opacity: 0, scale: 0.9 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ delay: 1.2, duration: 0.6 }}
+  whileHover={{ borderColor: "#818cf8" }}
+>
         {narration}
       </motion.div>
       {/* Analytics component vercel*/}
-    <Analytics />
-    </div>
+      <Analytics />
+    </motion.div>
   );
-};
-
-export default App;
+};export default App;
