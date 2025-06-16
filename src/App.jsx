@@ -4,6 +4,7 @@ import { Menu } from "lucide-react";
 import "./App.css";
 import { Analytics } from "@vercel/analytics/react"
 
+
 const sortingAlgorithms = {
   "Bubble Sort": "Bubble Sort is a simple comparison-based algorithm where each pair of adjacent elements is compared and swapped if they are in the wrong order.",
   "Selection Sort": "Selection Sort repeatedly selects the minimum element from the unsorted portion and places it at the beginning.",
@@ -272,6 +273,8 @@ const App = () => {
       <motion.div ref={narrationRef} className="bg-zinc-900 text-indigo-300 p-5 w-full max-w-4xl rounded-xl h-60 overflow-y-auto font-mono text-sm whitespace-pre-wrap border border-indigo-600 shadow-inner">
         {narration}
       </motion.div>
+      {/* Analytics component vercel*/}
+    <Analytics />
     </div>
   );
 };
