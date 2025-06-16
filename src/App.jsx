@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
 import "./App.css";
+import { Analytics } from "@vercel/analytics/react"
 
 const sortingAlgorithms = {
   "Bubble Sort": "Bubble Sort is a simple comparison-based algorithm where each pair of adjacent elements is compared and swapped if they are in the wrong order.",
