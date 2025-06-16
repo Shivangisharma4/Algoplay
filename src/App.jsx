@@ -208,11 +208,12 @@ const App = () => {
 
   return (
     <motion.div 
-      className="bg-gradient-to-br from-stone-900 via-zinc-900 to-neutral-800 min-h-screen w-full flex flex-col items-center px-4 pt-20 pb-8"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
+  className="bg-gradient-to-br from-stone-900 via-zinc-900 to-neutral-800 min-h-screen w-full flex flex-col px-4 pt-20"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1 }}
+>
+<div className="flex-1 flex flex-col items-center pb-8">
       {/* Navbar */}
       <motion.nav 
         className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-gradient-to-r from-zinc-950/60 via-zinc-900/60 to-stone-900/60 text-indigo-300 shadow-md flex justify-between items-center px-6 py-2 border-b border-indigo-900"
@@ -371,8 +372,51 @@ const App = () => {
 >
         {narration}
       </motion.div>
-      {/* Analytics component vercel*/}
-      <Analytics />
+      </div>
+
+{/* Footer */}
+<motion.footer 
+  className="w-full bg-zinc-900/80 backdrop-blur-sm border-t border-indigo-900/50 mt-auto py-4 mx-4"
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 1.5, duration: 0.6 }}
+>
+  {/* Copyright */}
+  <motion.div 
+    className="text-indigo-400 text-sm text-center md:text-center" 
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 2 }}
+  >
+    <div>© 2025 AlgoPlay - All rights reserved</div>
+  </motion.div>
+
+  <div className="flex gap-6 mt-auto mb-4 py-3 md:mb-0 justify-center">
+    {/* Made with love by Shivangi */}
+    <motion.div 
+      className="text-indigo-300 text-sm"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 2 }}
+    >
+      Made with ❤️ by{' '}
+      <motion.a
+        href="https://x.com/shivangitwt"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-indigo-400 hover:text-indigo-200 font-medium transition-colors cursor-pointer"
+        whileHover={{ scale: 1.1 }}
+        transition={{ duration: 0.2 }}
+      >
+        Shivangi
+      </motion.a>
     </motion.div>
-  );
-};export default App;
+  </div>
+</motion.footer>
+
+{/* Analytics component vercel*/}
+<Analytics />
+</motion.div>
+);
+};
+export default App;
