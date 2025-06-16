@@ -20,12 +20,12 @@ const App = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [pendingSteps, setPendingSteps] = useState([]);
   
-  // All useRef hooks
+
   const sortRef = useRef([]);
   const narrationRef = useRef(null);
   const mergeAuxRef = useRef([]);
   const mergeStackRef = useRef([]);
-  const quickStackRef = useRef([]); // Added this missing ref
+  const quickStackRef = useRef([]); 
   const stepPointer = useRef(0);
 
   useEffect(() => {
@@ -75,7 +75,7 @@ const App = () => {
             setCurrentStep({ ...currentStep, i: i + 1, j: 0 });
           }
         } else {
-          setNarration(prev => prev + "🎉 Bubble Sort Completed!\n");
+          setNarration(prev => prev + "Bubble Sort Completed!\n");
           setCompleted(true);
         }
       } 
@@ -98,7 +98,7 @@ const App = () => {
           sortRef.current = arr;
           setCurrentStep({ ...currentStep, i: i + 1 });
         } else {
-          setNarration(prev => prev + "🎉 Selection Sort Completed!\n");
+          setNarration(prev => prev + "Selection Sort Completed!\n");
           setCompleted(true);
         }
       } 
@@ -125,7 +125,7 @@ const App = () => {
             setCurrentStep({ ...currentStep, i: i + 1 });
           }
         } else {
-          setNarration(prev => prev + "🎉 Insertion Sort Completed!\n");
+          setNarration(prev => prev + "Insertion Sort Completed!\n");
           setCompleted(true);
         }
       } 
@@ -165,7 +165,7 @@ const App = () => {
           setArray([...arr]);
           sortRef.current = arr;
         } else {
-          setNarration(prev => prev + `🎉 Merge Sort Completed!\n`);
+          setNarration(prev => prev + `Merge Sort Completed!\n`);
           setCompleted(true);
         }
       } 
@@ -198,7 +198,7 @@ const App = () => {
             sortRef.current = arr;
           }
         } else {
-          setNarration(prev => prev + `🎉 Quick Sort Completed!\n`);
+          setNarration(prev => prev + `Quick Sort Completed!\n`);
           setCompleted(true);
         }
       }
