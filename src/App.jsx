@@ -392,7 +392,6 @@ const App = () => {
   </motion.div>
 
   <div className="flex gap-6 mt-auto mb-4 py-3 md:mb-0 justify-center">
-    {/* Made with love by Shivangi */}
     <motion.div 
       className="text-indigo-300 text-sm"
       initial={{ opacity: 0 }}
