@@ -15,7 +15,6 @@ Features -
 -Generate New Arrays: Create random datasets to test algorithms with
 Live Demo
 
-**Visit algoplay.live to start exploring algorithms immediately.**
 
 Usage -
 
