@@ -1,12 +1,24 @@
-# React + Vite
+AlgoPlay
+An interactive algorithm visualization platform for learning and understanding sorting algorithms through visual demonstrations.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+Interactive Visualizations: Watch algorithms work in real-time with animated bar charts
+Multiple Sorting Algorithms: Explore various sorting techniques including Bubble Sort and more
+Step-by-Step Execution: Control algorithm progression with "Next Step" functionality
+Educational Content: Clear explanations of how each algorithm works
+Generate New Arrays: Create random datasets to test algorithms with
+Live Demo
+Visit algoplay.live to start exploring algorithms immediately.
 
-Currently, two official plugins are available:
+Usage
+Sort: Choose from available sorting algorithms
+Visualize: Watch the algorithm sort data with animated bars
+Learn: Read algorithm descriptions and understand the process
+Experiment: Generate new arrays and observe different scenarios
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Anyone curious about how sorting works under the hood
+This platform makes abstract algorithmic concepts tangible through interactive visualization.
 
-## Expanding the ESLint configuration
+still very cool stuff building in stealth mode!
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
